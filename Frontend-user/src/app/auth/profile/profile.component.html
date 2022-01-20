@@ -1,0 +1,71 @@
+<div class="container">
+    <form class="form">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="nomFormControl"
+          [(ngModel)]="nom"
+        />
+      </mat-form-field>
+  
+  
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          [(ngModel)]="email"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Veuillez saisir une adresse email
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          L'adresse email est <strong>requise</strong>
+        </mat-error>
+      </mat-form-field>
+  
+  
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="passwordFormControl"
+          [(ngModel)]="password"
+        />
+        <mat-error *ngIf="!passwordFormControl.hasError('required')">
+          Veuillez saisir un mot de passe
+        </mat-error>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Le mot de passe est <strong>requis</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <div class="row">
+        <div class="col-3">
+            <a mat-button  class="btn btn-info" >Enregistrer</a>
+        </div>
+        <div class="col-3">
+            <a mat-button  class="btn btn-info" (click)="deleteAccount()">Supprimer mon compte</a>
+        </div>
+
+    </div>
+  
+
+    <!---To do add la fonction pour valider-->
+
+      
+    
+  
+  
+  </div>
+  
