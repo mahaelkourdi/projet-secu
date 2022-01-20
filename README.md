@@ -4,6 +4,7 @@
 
 1. Dans la racine du dossier, lancer les commandes suivantes : 
   *docker-compose build*
+  
   *docker-compose up* 
   
   Vérifier si les images sont build ( Vérifier le dashboard de Docker) 
