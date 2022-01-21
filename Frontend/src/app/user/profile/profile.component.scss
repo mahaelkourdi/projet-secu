@@ -1,0 +1,44 @@
+.card {
+    margin-top: 2%;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    border-radius: 10px;
+  }
+  .form-group {
+    padding: 2%;
+  }
+  .form-control {
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+  }
+  .form-control:focus {
+    box-shadow: none;
+    border: 2px solid #039be5;
+  }
+  .agree-text {
+    font-size: 12px;
+  }
+  .terms {
+    font-size: 12px;
+    text-decoration: none;
+    color: #039be5;
+  }
+  .btn {
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 1%;
+  }
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  

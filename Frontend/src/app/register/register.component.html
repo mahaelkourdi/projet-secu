@@ -1,0 +1,39 @@
+<div class="row d-flex justify-content-center align-items-center home-fullpage">
+    <div class="col-md-6">
+      <div class="card">
+        <h5 class="card-header primary-color white-text text-center py-4">
+          <strong class="text-uppercase">S'inscrire</strong>
+        </h5>
+        <form>  
+          <div class="form-group" [formGroup]="userForm" >
+            <input type="nom" class="form-control" aria-describedby="nom"
+                   placeholder="Nom*" formControlName="nom" >
+  
+            <div *ngIf="submitted && userForm.controls['nom'].invalid" class="alert">
+              <div *ngIf="userForm.controls['nom'].errors?.['required']">
+                Nom est requis
+              </div></div>
+  
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email*" formControlName="email" required>
+
+              <div *ngIf="submitted && userForm.controls['email'].invalid" class="alert">
+                <div *ngIf="userForm.controls['email'].errors?.['required']">
+                  Email est requis
+                </div></div>
+            <input type="mdp" class="form-control" id="exampleInputPassword1" placeholder="Password*" formControlName="mdp" required>
+
+          <div *ngIf="submitted && userForm.controls['mdp'].invalid" class="alert">
+            <div *ngIf="userForm.controls['mdp'].errors?.['required']">
+              Password est requis
+            </div></div>
+            </div>
+            <br/>
+            <div class="button-container">
+                <button type="button" class="btn btn-secondary" [routerLink]="'/'">Retour</button>
+                <button type="button" class="btn btn-primary btn-block confirm-button" (click)="onFormSubmit()">Envoyer</button>
+              </div>
+
+        </form>
+    </div>
+    </div>
+</div>

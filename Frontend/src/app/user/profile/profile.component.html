@@ -1,0 +1,39 @@
+<div class="row d-flex justify-content-center align-items-center home-fullpage">
+    <div class="form-group col-md-10">
+      <form class="form-group" [formGroup]="userForm">
+        <label>Name</label>
+        <input
+          type="nom"
+          class="form-control"
+          aria-describedby="name"
+          formControlName="name"
+          [ngModel]="userForm.value.name"
+          required
+        />
+  
+        <label>Email </label>
+        <input
+          type="nom"
+          class="form-control"
+          aria-describedby="email"
+          formControlName="email"
+          [ngModel]="userForm.value.email"
+          required
+        />
+
+        <label>Password </label>
+        <input
+          type="nom"
+          class="form-control"
+          aria-describedby="password"
+          formControlName="password"
+          required
+        />
+        <br/>    
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary" [routerLink]="'/'">Retour</button>
+            <button type="button" class="btn btn-primary btn-block confirm-button" (click)="onFormSubmit()">Envoyer</button>
+          </div>
+</form>
+</div>
+</div>  

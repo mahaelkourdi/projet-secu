@@ -1,15 +1,15 @@
 version: '3.7'
 services:
-  front-admin:
+  front:
     stdin_open: true
     build:
-      context: ./Frontend-admin
+      context: ./Frontend
       dockerfile: Dockerfile
     ports:
       - '4200:4200'
     volumes:
-      - 'app/node_modules'
-      - './Frontend-admin:/app'
+      - '/app/node_modules'
+      - './Frontend:/app'
     networks:
       - net
       
