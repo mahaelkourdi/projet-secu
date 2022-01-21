@@ -9,7 +9,12 @@ const port =  3000;
 // au body parser de parser uniquement ce format.
 const bodyParser = require ('body-parser');
 app.use(bodyParser.json());
-
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse the raw data
+app.use(bodyParser.raw());
+// parse text
+app.use(bodyParser.text());
 // permet d'éviter le problème de CORS que l'on avait déjà vu
 const cors = require ('cors');
 app.use(cors({origin: 'http://localhost:4200', credentials: true}));

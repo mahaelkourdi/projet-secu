@@ -10,7 +10,7 @@ module.exports = app =>{
     const userCtrl = require ('../controllers/user/user');
 
     router.get('/',(req,res)=> {
-        sendMessage(res,"Welcome to The application!");
+        sendMessage(res,"Welcome to The applic333at3333ion!");
     })
 
     router.post('/signup', (req, res) => {
