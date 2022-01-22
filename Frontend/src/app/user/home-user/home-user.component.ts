@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MessageService } from 'src/app/message/message.service';
 import { Data } from '../../data';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/auth/token-storage.service';
 
 
 
@@ -21,15 +22,14 @@ export class HomeUserComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  id = this.ActivatedRoute.snapshot.paramMap.get('id');
 
-  constructor(private message:MessageService, private ActivatedRoute : ActivatedRoute) { }
+  constructor(private message:MessageService, private tokenStorage : TokenStorageService) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    this.message.getAllUsers(this.id).subscribe({
+    this.message.getAllUsers(this.tokenStorage.getUser().userId).subscribe({
       next: (value) => {
         this.users = value.data;
         console.log(value)

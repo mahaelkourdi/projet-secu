@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="" routerLinkActive="active"
+  <a class="navbar-brand"
     >PolyAnnuaire</a
   >
   <button
@@ -23,6 +23,14 @@
           >Home</a
         >
       </li>
+      <li *ngIf="this.tokenStorage.getUser().role == 'User'">
+      <a
+        class="nav-item nav-link"
+        [routerLink]="['/profile',this.tokenStorage.getUser().userId]"
+        routerLinkActive="active"
+        >Mon profile</a
+      >
+      </li>
       <li *ngIf="this.tokenStorage.getUser().role == 'Admin'">
         <a
           class="nav-item nav-link"
@@ -34,6 +42,7 @@
       <!-- To add *ngIf="auth.test()"-->
     </div>
   </div>
+
   <span class="navbar-text">
     <ul class="navbar-nav mr-auto" *ngIf="this.tokenStorage.getToken() != null">
       <li class="nav-item">

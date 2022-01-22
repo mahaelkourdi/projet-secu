@@ -15,7 +15,9 @@ export class NavbarComponent implements OnInit {
     public tokenStorage: TokenStorageService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.tokenStorage.getUser().userId);
+  }
 
   logout(): void {
     sessionStorage.clear();

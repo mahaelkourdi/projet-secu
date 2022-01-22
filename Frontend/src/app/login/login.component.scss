@@ -8,6 +8,11 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-button{
-  margin: 10px;
+
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn{
+  margin: 1%;
 }

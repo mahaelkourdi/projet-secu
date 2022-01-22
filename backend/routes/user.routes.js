@@ -33,6 +33,10 @@ module.exports = app =>{
         userCtrl.getUserById(req,res);
     })
     
+    router.delete('/delete/:idUser',(req,res)=>{
+        userCtrl.deleteUser(req,res);
+    })
+
 
     app.use('/api/user',router);
 }

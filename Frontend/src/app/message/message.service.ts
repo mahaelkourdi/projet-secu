@@ -49,6 +49,13 @@ export class MessageService {
     return this.http.post<Data>(adr, data, { withCredentials: true });
   }
 
+  // clôturer le compte 
+
+  deleteAccount(id: any):Observable<Data> {
+    const adr: string = environment.url + '/user/delete/' + id;
+    return this.http.delete<Data>(adr, { withCredentials: true });
+  }
+
   getAllUserAdmin(id: any): Observable<Data> {
     const adr: string = environment.url + '/admin/getUser/' + id;
     return this.http.get<Data>(adr, { withCredentials: true });
@@ -83,4 +90,6 @@ export class MessageService {
       environment.url + `/admin/grant/${idUser}/${privilege}/${value}`;
     return this.http.patch<Data>(adr, { withCredentials: true });
   }
+
+
 }

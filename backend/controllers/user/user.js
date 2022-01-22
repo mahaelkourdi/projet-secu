@@ -92,6 +92,14 @@ async function getUserById(req, res) {
   sendMessage(res, user);
 }
 
+async function deleteUser(req, res) {
+  const idUser = req.params.idUser;
+  let user = await queries.deleteUser(idUser);
+  sendMessage(res, user);
+}
+
+
+
 module.exports.signup = signup;
 module.exports.login = login;
 module.exports.updatePassword = updatePassword;
