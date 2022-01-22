@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Data } from '../data';
 import { MessageService } from '../message/message.service';
+import { Data } from '../data';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,12 @@ export class AuthService {
 
   constructor(private message: MessageService) {}
 
-  sendAuthentication(obj: any) {
-    return this.message.login(obj);
+  sendAuthentication(obj: any, role: any) {
+    if (role) {
+      return this.message.loginAdmin(obj);
+    } else {
+      return this.message.login(obj);
+    }
   }
 
   finalizeAuthentication(reponse: Data) {
@@ -23,9 +27,8 @@ export class AuthService {
       this.isLoggedIn = false;
     }
   }
-
+  // Tester si l'utilisateur est connecté
   test() {
     return this.isLoggedIn;
   }
-
 }
