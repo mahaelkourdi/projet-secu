@@ -22,7 +22,7 @@ export class MessageService {
     return this.http.post<Data>(adr, data, { withCredentials: true });
   }
 
-  // S'inscrire via un email + mdp
+  // S'inscrire via un email + mdp + name
   signup(data: any): Observable<Data> {
     const adr: string = environment.url + '/user/signup';
     return this.http.post<Data>(adr, data, { withCredentials: true });
@@ -47,5 +47,40 @@ export class MessageService {
   update(data: any): Observable<Data> {
     const adr: string = environment.url + '/user/update';
     return this.http.post<Data>(adr, data, { withCredentials: true });
+  }
+
+  getAllUserAdmin(id: any): Observable<Data> {
+    const adr: string = environment.url + '/admin/getUser/' + id;
+    return this.http.get<Data>(adr, { withCredentials: true });
+  }
+
+  deleteUserAdmin(id: any): Observable<Data> {
+    const adr: string = environment.url + '/admin/deleteUser/' + id;
+    return this.http.delete<Data>(adr, { withCredentials: true });
+  }
+
+  createUser(data: any): Observable<Data> {
+    const adr: string = environment.url + '/admin/setUser';
+    return this.http.post<Data>(adr, data, { withCredentials: true });
+  }
+
+  getUserByIdAdmin(id: any): Observable<Data> {
+    const adr: string = environment.url + '/admin/getUserById/' + id;
+    return this.http.get<Data>(adr, { withCredentials: true });
+  }
+
+  ModifyUserPasswordAdmin(data: any): Observable<Data> {
+    const adr: string = environment.url + '/admin/update/';
+    return this.http.patch<Data>(adr, data, { withCredentials: true });
+  }
+
+  modifyUserGrantAdmin(
+    idUser: any,
+    privilege: any,
+    value: any
+  ): Observable<Data> {
+    const adr: string =
+      environment.url + `/admin/grant/${idUser}/${privilege}/${value}`;
+    return this.http.patch<Data>(adr, { withCredentials: true });
   }
 }

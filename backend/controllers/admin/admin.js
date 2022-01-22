@@ -84,7 +84,7 @@ async function login(req, res) {
           return sendError(res, { error: 'Mot de passe incorrect !' });
         }
         sendMessage(res, {
-          userId: user[0].idUser,
+          userId: user[0].idAdmin,
           role: 'Admin',
           token: jwt.sign({ userId: user._id }, 'RANDOM_TOKEN_SECRET', {
             expiresIn: '24h',
@@ -100,12 +100,8 @@ async function login(req, res) {
 }
 
 async function getAllUser(req, res) {
-  const idUser = req.body.idUser;
-  let date = await queries.getGrantDate(idUser);
-  date = date[0].is_grantable;
-  let email = await queries.getGrantEmail(idUser);
-  email = email[0].is_grantable;
-  const users = await queries.getAllUser(date, email);
+  const idUser = req.params.idUser;
+  const users = await queries.getAllUser();
   sendMessage(res, users);
 }
 

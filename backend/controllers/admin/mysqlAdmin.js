@@ -33,11 +33,13 @@ function setAdmin(name, password, email) {
 }
 function setUser(name, password, email) {
   const query = `
-        INSERT INTO ${config.mysqlUser} (name, password , email) 
-        VALUES (${name}, ${password}, ${email})`;
+    INSERT INTO ${config.mysqlUser} (name, password , email) 
+    VALUES ?`;
+
+  const data = [[name, password, email]];
 
   return new Promise((resolve, reject) => {
-    db.query(query, (err, rows) => {
+    db.query(query, [data], (err, rows) => {
       if (err) return reject(err);
       resolve(rows);
     });
@@ -137,25 +139,9 @@ function getGrantEmail(idUser) {
   });
 }
 
-function getAllUser(date, email) {
-  let query = ``;
-  if (date == 1) {
-    if (email == 1) {
-      query = `
-                SELECT name , email, signup_date FROM ${config.mysqlUser}`;
-    } else {
-      query = `
-                SELECT name , signup_date FROM ${config.mysqlUser}`;
-    }
-  } else {
-    if (email == 1) {
-      query = `
-                SELECT name , email FROM ${config.mysqlUser}`;
-    } else {
-      query = `
-                SELECT name  FROM ${config.mysqlUser}`;
-    }
-  }
+function getAllUser() {
+  let query = `SELECT idUser, name , email, signup_date FROM ${config.mysqlUser}`;
+
   return new Promise((resolve, reject) => {
     db.query(query, (err, rows) => {
       if (err) return reject(err);

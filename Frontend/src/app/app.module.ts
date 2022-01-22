@@ -23,6 +23,8 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AddUserComponent } from './admin/add-user/add-user.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ModifyUserComponent,
     HomeUserComponent,
     RegisterComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddUserComponent } from './admin/add-user/add-user.component';
 import { HomeAdminComponent } from './admin/home-admin/home-admin.component';
 import { ModifyUserComponent } from './admin/modify-user/modify-user.component';
 import { AdminGuard } from './auth/admin.guard';
@@ -17,14 +18,17 @@ const routes: Routes = [
     canActivateChild: [UserGuard],
     children: [
       { path: 'homeUser', component: HomeUserComponent },
-      { path: 'modify', component: ModifyUserComponent },
       { path: 'profile/:id', component: ProfileComponent },
     ],
   },
   {
     path: '',
     canActivateChild: [AdminGuard],
-    children: [{ path: 'homeAdmin', component: HomeAdminComponent }],
+    children: [
+      { path: 'homeAdmin', component: HomeAdminComponent },
+      { path: 'addUserAdmin', component: AddUserComponent },
+      { path: 'modifyAdmin/:id', component: ModifyUserComponent },
+    ],
   },
 ];
 
