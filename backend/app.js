@@ -17,7 +17,7 @@ app.use(bodyParser.raw());
 app.use(bodyParser.text());
 // permet d'éviter le problème de CORS que l'on avait déjà vu
 const cors = require ('cors');
-app.use(cors({origin: 'http://localhost:4200', credentials: true}));
+app.use(cors({origin: 'http://139.124.86.164:4200', credentials: true}));
 
 // ici, on met en place les routes qui seront servies par le serveur web :
 // chaque route correspond à un fichier que l'on charge via un require. Ce
