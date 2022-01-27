@@ -51,10 +51,13 @@ services:
       - net
 
 networks:
-  front:
-    ipam:
-      config:
-        - subnet: '10.10.10.0/24'
-          gateway: '10.10.10.254'
-   net:
+    front:
+        # use the bridge driver, but enable IPv6
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.10.10.0/24
+                gateway: 10.10.10.254
+    net:
      driver: bridge
