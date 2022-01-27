@@ -11,7 +11,7 @@ services:
       - '/app/node_modules'
       - './Frontend:/app'
     networks:
-      - net
+      - front
       
   backend:
     build:
@@ -51,8 +51,10 @@ services:
       - net
 
 networks:
-  net:
+  front:
     ipam:
       config:
         - subnet: '10.10.10.0/24'
           gateway: '10.10.10.254'
+   net:
+     driver: bridge
