@@ -11,7 +11,9 @@ services:
       - '/app/node_modules'
       - './Frontend:/app'
     networks:
-      - net
+       dmz:
+        ipv4_address: 10.10.10.1
+      
       
   backend:
     build:
@@ -53,3 +55,14 @@ services:
 networks:
   net:
     driver: bridge
+  dmz:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.10.10.0/24
+         gateway: 10.10.10.254
+         aux_addresses:
+          front: 10.10.10.10
+    
+
+    
