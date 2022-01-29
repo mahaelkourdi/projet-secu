@@ -11,7 +11,7 @@ services:
       - '/app/node_modules'
       - './Frontend:/app'
     networks:
-       dmz:
+       dmz_lan:
         ipv4_address: 10.10.10.1
       
       
@@ -22,7 +22,8 @@ services:
     ports:
       - '3000:3000'
     networks:
-      - net
+      backend_lan:
+        ipv4_address: 10.10.11.1
     restart: on-failure
     environment:
       - MYSQL_HOST=db
@@ -37,7 +38,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:
-      - net
+      backend_lan:
+        ipv4_address: 10.10.11.2
 
   myadmin:
     depends_on:
@@ -50,19 +52,26 @@ services:
     ports:
       - '8080:80'
     networks:
-      - net
+      backend_lan:
+        ipv4_address: 10.10.11.3
 
 networks:
   net:
     driver: bridge
-  dmz:
+  dmz_lan:
     driver: bridge
     ipam:
-     config:
-       - subnet: 10.10.10.0/24
-         gateway: 10.10.10.254
-         aux_addresses:
-          front: 10.10.10.10
-    
+      driver: default
+      config:
+        - subnet: 10.10.10.0/24
+          gateway: 10.10.10.254
+  backend_lan:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.11.0/24
+          gateway: 10.10.11.254
 
-    
+
+  
