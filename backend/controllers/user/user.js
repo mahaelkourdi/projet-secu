@@ -1,10 +1,12 @@
 // les queries dans la base de données.
 const queries = require('./mysqlUser');
+const logger = require('../../config/winston')
+const { sendError, sendMessage } = require('../../message');
+
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const { sendError, sendMessage } = require('../../message');
 
 async function signup(req, res) {
   if (req.body.name && req.body.password && req.body.email) {
@@ -55,7 +57,7 @@ async function login(req, res) {
 
     const user = await queries.getByMail(email);
     if (user.length > 0) {
-      console.log(user);
+      //console.log(user);
       bcrypt.compare(password, user[0].password).then((valid) => {
         if (!valid) {
           return sendError(res, { error: 'Mot de passe incorrect !' });

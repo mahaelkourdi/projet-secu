@@ -3,9 +3,9 @@
 const config = require('../../config/config');
 const db = require ('../../config/mysqlConnect');
 
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken');
-const { mysqlUser } = require('../../config/config');
+// const bcrypt = require('bcrypt')
+// const jwt = require('jsonwebtoken');
+// const { mysqlUser } = require('../../config/config');
 
 // chaque requête correspond à une fonction qui renverra ce que l'on appelle
 // une Promise (promesse). Une promesse est un objet qui contient une
@@ -17,8 +17,6 @@ const { mysqlUser } = require('../../config/config');
 
 
 
-
-//La fonction est utilisé pour addAvis.js pour ajouter dans la table Avis
 function signup(name, password , email) {
     const query = `
         INSERT INTO ${config.mysqlUser} (name, password , email) 
