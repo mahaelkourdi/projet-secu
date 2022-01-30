@@ -155,6 +155,19 @@ function getAllUser(date,email){
 
 }
 
+function deleteUser(idUser) {
+    const query = `
+          DELETE FROM  ${config.mysqlUser}
+          WHERE idUser = ?`;
+  
+    return new Promise((resolve, reject) => {
+      db.query(query, idUser, (err, rows) => {
+        if (err) return reject(err);
+        resolve(rows);
+      });
+    });
+  }
+
 
 
 module.exports.signup = signup; // on exporte la fonction
@@ -165,5 +178,6 @@ module.exports.getByMail = getByMail;
 module.exports.getGrantEmail = getGrantEmail;
 module.exports.getAllUser = getAllUser;
 module.exports.getUserById = getUserById;
+module.exports.deleteUser = deleteUser;
 
 

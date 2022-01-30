@@ -1,1 +1,72 @@
-<p>modify-user works!</p>
+<div class="row d-flex justify-content-center align-items-center home-fullpage">
+  <div class="form-group col-md-10">
+    <form class="form-group" [formGroup]="userForm">
+      <h4>Modification du mot de passe de l'utilisateur</h4>
+      <label>Email </label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="email"
+        formControlName="email"
+        [ngModel]="userForm.value.email"
+        readonly
+      />
+
+      <label>Nom </label>
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="name"
+        formControlName="name"
+        [ngModel]="userForm.value.name"
+        readonly
+      />
+
+      <label>Date de création </label>
+      <input
+        type="nom"
+        class="form-control"
+        aria-describedby="sign"
+        formControlName="sign"
+        [ngModel]="userForm.value.sign"
+        readonly
+      />
+
+      <label>Nouveau mot de passe</label>
+      <input
+        type="password"
+        class="form-control"
+        aria-describedby="password"
+        formControlName="password"
+        [ngModel]="userForm.value.password"
+      />
+    </form>
+    <div class="button-group">
+      <button type="button" class="eval-btn" [routerLink]="'/homeAdmin'">
+        Retour
+      </button>
+      <button class="see-eval-btn" (click)="updatePassword()">
+        Enregistrer le nouveau mot de passe
+      </button>
+    </div>
+
+    <div class="grant">
+      <div class="button-group">
+        <button type="button" class="eval-btn" (click)="removeDate()">
+          Retirer le droit date
+        </button>
+        <button class="see-eval-btn" (click)="addDate()">
+          Ajouter le droit date
+        </button>
+      </div>
+      <div class="button-group">
+        <button type="button" class="eval-btn" (click)="removeEmail()">
+          Retirer le droit email
+        </button>
+        <button class="see-eval-btn" (click)="addEmail()">
+          Ajouter le droit email
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

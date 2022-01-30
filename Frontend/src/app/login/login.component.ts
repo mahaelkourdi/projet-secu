@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
-import {AuthService} from "../auth/auth.service";
-import {Router} from "@angular/router";
+import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../auth/token-storage.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class HomeComponent implements OnInit {
-
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   submitted = false;
-  errorMessage:string='';
-
+  errorMessage: string = '';
+  isAdmin = false;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -23,7 +23,11 @@ export class HomeComponent implements OnInit {
 
   passwordFormControl = new FormControl('', [Validators.required]);
 
-  constructor(private route: Router, private auth: AuthService) { }
+  constructor(
+    private route: Router,
+    private auth: AuthService,
+    private tokenStorage: TokenStorageService
+  ) {}
 
   ngOnInit(): void {
     if (sessionStorage.getItem('loggedIn') == 'true') {
@@ -36,29 +40,35 @@ export class HomeComponent implements OnInit {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       return;
     }
-    console.log(this.email + ' ' + this.password);
     const obj: Object = {
       email: this.email,
       password: this.password,
     };
 
-
-    this.auth.sendAuthentication(obj).subscribe({
+    this.auth.sendAuthentication(obj, this.isAdmin).subscribe({
       next: (value) => {
-        //console.log(value);
-        sessionStorage.setItem("userId", value.data.userId);
+        this.tokenStorage.saveToken(value.data.token);
+        this.tokenStorage.saveUser(value.data);
         this.auth.finalizeAuthentication(value);
       },
       complete: () => this.finalizeCheck(),
-
     });
-
   }
+
   finalizeCheck(): void {
     if (this.auth.isLoggedIn) {
       this.errorMessage = '';
+      // Rajouter tous les cas
       if (this.auth.redirectUrl == '') {
-        this.route.navigateByUrl('/');
+        console.log(this.tokenStorage.getUser().role);
+        switch (this.tokenStorage.getUser().role) {
+          case 'User':
+            this.route.navigateByUrl('/homeUser');
+            break;
+          case 'Admin':
+            this.route.navigateByUrl('/homeAdmin');
+            break;
+        }
       } else {
         this.route.navigateByUrl(this.auth.redirectUrl);
       }
@@ -66,5 +76,4 @@ export class HomeComponent implements OnInit {
       this.errorMessage = 'Mauvaise Combinaison';
     }
   }
-
 }

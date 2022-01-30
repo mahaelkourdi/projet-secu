@@ -31,7 +31,8 @@
         />
         <br/>    
         <div class="button-container">
-            <button type="button" class="btn btn-secondary" [routerLink]="'/'">Retour</button>
+          <button type="button" class="btn btn-warning" (click)="deleteUser()">Clôturer votre compte</button>
+            <button type="button" class="btn btn-secondary" [routerLink]="'/homeUser'">Retour</button>
             <button type="button" class="btn btn-primary btn-block confirm-button" (click)="onFormSubmit()">Envoyer</button>
           </div>
 </form>

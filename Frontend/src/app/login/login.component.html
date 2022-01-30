@@ -37,7 +37,13 @@
       </mat-error>
     </mat-form-field>
   </form>
-  <button mat-flat-button color="primary" (click)="authenticate()">
-    Se connecter
-  </button>
+  <mat-checkbox class="example-margin" [(ngModel)]="isAdmin">
+    Admin
+  </mat-checkbox>
+  <div class="button-container">
+    <button type="button" class="btn btn-success" [routerLink]="'/register'">S'inscrire</button>
+    <button type="button" class="btn btn-primary btn-block confirm-button" (click)="authenticate()">Se connecter</button>
+  </div>
+
+
 </div>
