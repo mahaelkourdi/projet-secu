@@ -1,4 +1,4 @@
-version: '3.7'
+version: '2'
 services:
   front:
     stdin_open: true
@@ -61,14 +61,14 @@ networks:
   dmz_lan:
     driver: bridge
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.10.10.0/24
           gateway: 10.10.10.254
   backend_lan:
     driver: bridge
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.10.11.0/24
           gateway: 10.10.11.254
