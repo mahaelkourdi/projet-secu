@@ -67,10 +67,10 @@ networks:
         - subnet: 10.10.10.0/24
           gateway: 10.10.10.254
   backend_lan:
+    driver: macvlan
+    driver_opts:
+      parent: ens224
     ipam:
-      driver: macvlan
-      driver_opts:
-        parent: ens224
       config:
         - subnet: 10.10.11.0/24
           gateway: 10.10.11.254
