@@ -19,11 +19,9 @@ app.use(cors({origin: 'http://localhost:4200', credentials: true}));
 // fichier exporte juste une fonction, que l'on appelle quand l'utilisateur
 // demande à accéder à la route.
 
-const addUser = require ('./addUser');
 
-
-app.post ('/addUser', ((req, res) => {addUser(req,res); }));
-
+require('./routes/user.routes')(app);
+require('./routes/admin.routes')(app);
 
 
 app.listen(port, () => {console.log (`listening on port ${port}`)});
