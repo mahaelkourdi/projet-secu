@@ -50,7 +50,7 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - '8080:8080'
+      - '8080:80'
     networks:
       backend_lan:
         ipv4_address: 10.10.11.3
@@ -62,6 +62,7 @@ networks:
     driver: macvlan
     driver_opts:
       parent: ens192
+      macvlan_mode: bridge
     ipam:
       config:
         - subnet: 10.10.10.0/24
@@ -70,6 +71,7 @@ networks:
     driver: macvlan
     driver_opts:
       parent: ens224
+      macvlan_mode: bridge
     ipam:
       config:
         - subnet: 10.10.11.0/24
