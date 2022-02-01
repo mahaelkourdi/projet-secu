@@ -62,7 +62,6 @@ networks:
     driver: macvlan
     driver_opts:
       parent: ens192
-      macvlan_mode: bridge
     ipam:
       config:
         - subnet: 10.10.10.0/24
@@ -71,7 +70,6 @@ networks:
     driver: macvlan
     driver_opts:
       parent: ens224
-      macvlan_mode: bridge
     ipam:
       config:
         - subnet: 10.10.11.0/24
