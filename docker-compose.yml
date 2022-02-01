@@ -50,7 +50,7 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - '27182:27182'
+      - '9000:9000'
     networks:
       backend_lan:
         ipv4_address: 10.10.11.3
