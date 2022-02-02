@@ -10,13 +10,9 @@
   Vérifier si les images sont build ( Vérifier le dashboard de Docker) 
   
 2. Aller sur localhost:8080 (PhpMyAdmin), créer une nouvelle base de données *annuaire_secu* et importer la base de données qui dans la racine du dossier. 
-**Attention !!!! : le format de la bdd est  : utf8_aci_general**
+3. Se connecter sur localhost:4200 
 
-4. Tester le backend sur postman, exemple : http://localhost:3000/addUser, le message suivant s'affiche : 
-     "status": "ok",
-    "data": "L'utilisateur a été ajouter"
+
+Attention cette config est prévue uniquement dans le cas de la machine virtuelle. 
     
     
-## Lancer l'appli sans docker 
-
-Modifier  et le fichier config.js du backend à votre environnement. Si vous changez la config veuillez ne pas la push :) 
