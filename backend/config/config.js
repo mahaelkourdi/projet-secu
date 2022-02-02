@@ -1,10 +1,10 @@
 const config = {
     // paramètres de connexion à la base de données
-    mysqlHost:  '127.0.0.1',   //'db', pour docker '127.0.0.1', sans docker
+    mysqlHost:  'db',   //'db', pour docker '127.0.0.1', sans docker
     mysqlDatabase: 'annuaire_secu',
     charset:       'utf8',
-    mysqlLogin:    'phpmyadmin', //'root'   //'phpmyadmin'
-    mysqlPassword: 'phpmyadmin', //'phpmyadmin'
+    mysqlLogin:    'root', //'root'   //'phpmyadmin'
+    mysqlPassword: 'root', //'phpmyadmin'
 
     // les noms des tables
     mysqlUser:    'User',
